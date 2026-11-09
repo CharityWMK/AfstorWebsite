@@ -142,7 +142,7 @@ a {
 }
 
 .site-header.is-scrolled .brand-logo {
-  filter: brightness(0.3);
+  filter: none;
 }
 
 .menu-toggle {
@@ -227,13 +227,13 @@ a {
 }
 
 .nav-link-cta {
-  color: var(--color-white);
-  background-color: var(--color-olive);
+  color: var(--color-muted);
+  background-color: transparent;
 }
 
 .nav-link-cta:hover,
 .nav-link-cta:focus-visible {
-  color: var(--color-white);
+  color: var(--color-olive);
 }
 
 .content-section {
