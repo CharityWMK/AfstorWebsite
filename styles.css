@@ -1804,3 +1804,108 @@ h2 {
     height: 1.7rem;
   }
 }
+/* ==========================================================================
+   Responsive refinements: phone (< 48rem), tablet (48rem–64rem), laptop/desktop (> 64rem)
+   ========================================================================== */
+
+/* Footer: two link columns side by side on phones, brand and contact full width */
+.footer-inner {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1rem;
+}
+
+.footer-brand-column,
+.footer-contact-column {
+  grid-column: 1 / -1;
+}
+
+.footer-blurb {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 47.999rem) {
+  /* keep the copyright line clear of the floating WhatsApp button */
+  .copyright {
+    padding-bottom: 5rem;
+  }
+
+  /* centre the product arrows on the product photo instead of over the text */
+  .product-arrow {
+    top: 8rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .footer-inner {
+    column-gap: 2rem;
+  }
+
+  .footer-brand-column {
+    grid-column: 1;
+  }
+
+  .footer-contact-column {
+    grid-column: 2;
+  }
+
+  .footer-blurb {
+    margin-left: 0;
+  }
+
+  /* align link lists with their headings */
+  .footer-links {
+    justify-content: start;
+  }
+}
+
+/* Tablet: stack About so the video gets the full width; four SDG tiles in one row */
+@media (min-width: 48rem) and (max-width: 64rem) {
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .about-video {
+    width: min(100%, 40rem);
+    margin: 0 auto;
+  }
+
+  .sdg-grid {
+    grid-template-columns: repeat(4, minmax(0, 10rem));
+  }
+}
+
+/* Laptop / desktop: footer in four columns */
+@media (min-width: 64.0625rem) {
+  .footer-inner {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr);
+    column-gap: 3rem;
+  }
+
+  .footer-brand-column,
+  .footer-contact-column {
+    grid-column: auto;
+  }
+}
+
+/* Small phones: full-width order button so its label stays on one line */
+@media (max-width: 30rem) {
+  .product-order {
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+}
+
+/* Laptop / desktop: keep the About video in view beside the longer text */
+@media (min-width: 64.0625rem) {
+  .about-video {
+    position: sticky;
+    top: 7rem;
+  }
+}
