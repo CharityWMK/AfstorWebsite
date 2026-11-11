@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/zpnitnzt/website/staging.afstor.co.ke/
+    - export DEPLOYPATH=/home/zpnitnzt/staging.afstor.co.ke/
     - /bin/cp -R * $DEPLOYPATH
