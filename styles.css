@@ -252,6 +252,7 @@ a {
 }
 
 #products,
+#faq,
 #contact-us {
   background-color: var(--color-olive-tint);
 }
@@ -738,6 +739,22 @@ h2 {
   color: #1a1a1a;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.product-highlights-heading {
+  margin: 1.25rem 0 0;
+  color: var(--color-ink);
+  font-size: 1rem;
+}
+
+.product-highlights {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .product-link {

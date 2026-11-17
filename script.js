@@ -237,7 +237,6 @@ if (productSlider && productSlides.length) {
   });
   productSlider.addEventListener('pointerdown', (event) => {
     touchStartX = event.clientX;
-    productSlider.setPointerCapture(event.pointerId);
   });
   productSlider.addEventListener('pointerup', (event) => {
     const distance = event.clientX - touchStartX;
