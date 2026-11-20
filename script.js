@@ -35,24 +35,6 @@ function closeMenu() {
   navigation.classList.remove('is-open');
 }
 
-function scrollToSection(event) {
-  const targetId = event.currentTarget.getAttribute('href');
-  const target = document.querySelector(targetId);
-
-  if (!target || !header) return;
-
-  event.preventDefault();
-  const headerOffset = header.offsetHeight + (utilityBar ? utilityBar.offsetHeight : 0);
-  const targetTop = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-
-  window.scrollTo({
-    top: targetTop,
-    behavior: 'smooth'
-  });
-
-  closeMenu();
-}
-
 function updateActiveLink() {
   const headerOffset = (header ? header.offsetHeight : 0) + (utilityBar ? utilityBar.offsetHeight : 0);
   const marker = window.scrollY + headerOffset + 4;
@@ -109,7 +91,7 @@ function showProduct(index) {
 
 function startProductAutoAdvance() {
   window.clearInterval(productAutoTimer);
-  productAutoTimer = window.setInterval(() => showProduct(activeProduct + 1), 4000);
+  productAutoTimer = window.setInterval(() => showProduct(activeProduct + 1), 30000);
 }
 
 function pauseAfterProductInteraction() {
@@ -276,7 +258,7 @@ if (menuToggle && navigation) {
   });
 }
 
-navLinks.forEach((link) => link.addEventListener('click', scrollToSection));
+navLinks.forEach((link) => link.addEventListener('click', closeMenu));
 heroDots.forEach((dot, index) => dot.addEventListener('click', () => showSlide(index)));
 window.addEventListener('scroll', updateActiveLink, { passive: true });
 window.addEventListener('resize', () => {
