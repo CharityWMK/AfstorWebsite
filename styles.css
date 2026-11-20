@@ -1109,18 +1109,109 @@ h2 {
   text-align: center;
 }
 
+.sdg-block > .values-subheading {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sdg-tier {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+}
+
+.sdg-tier + .sdg-tier {
+  margin-top: 1.5rem;
+}
+
+.sdg-tier-direct {
+  background: linear-gradient(135deg, #f3f5ef, #fff 70%);
+  border-color: #dce3d3;
+  box-shadow: 0 1rem 2.5rem rgb(31 39 27 / 7%);
+}
+
+.sdg-tier-secondary {
+  background-color: #fafbf9;
+  border-style: dashed;
+}
+
+.sdg-tier-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sdg-tier-label {
+  margin: 0;
+  color: var(--color-olive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sdg-tier-heading h3 {
+  margin: 0.25rem 0 0;
+  color: var(--color-ink);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.sdg-tier-description {
+  margin: 0.2rem 0 0;
+  color: var(--color-muted);
+}
+
+.sdg-tier-count {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.8rem;
+  color: var(--color-olive);
+  background-color: #e7ebdf;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .sdg-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 14.375rem);
-  justify-content: center;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 1rem;
-  margin: 2rem auto 0;
+  margin: 1.5rem auto 0;
 }
 
 .sdg-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--color-white);
+  border: 1px solid rgb(31 39 27 / 8%);
+  border-radius: 0.65rem;
+  box-shadow: 0 0.35rem 1rem rgb(31 39 27 / 8%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.sdg-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.7rem 1.4rem rgb(31 39 27 / 14%);
+}
+
+.sdg-card img {
+  display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1;
   object-fit: cover;
+}
+
+.sdg-card figcaption {
+  min-height: 2.75rem;
+  display: grid;
+  place-items: center;
+  padding: 0.45rem 0.35rem;
+  color: var(--color-ink);
+  font-size: clamp(0.65rem, 1vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .sdg-divider {
@@ -1577,7 +1668,7 @@ h2 {
   }
 
   .sdg-grid {
-    grid-template-columns: repeat(2, minmax(0, 11.875rem));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -1646,9 +1737,17 @@ h2 {
   }
 
   .sdg-grid {
-    grid-template-columns: repeat(2, minmax(0, 10rem));
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
+  }
+
+  .sdg-tier-heading {
+    align-items: flex-start;
+  }
+
+  .sdg-tier-count {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.72rem;
   }
 
   .contact-form-panel {
