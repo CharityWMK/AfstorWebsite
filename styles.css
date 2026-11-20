@@ -1174,7 +1174,8 @@ h2 {
 
 .sdg-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 8rem));
+  justify-content: center;
   gap: 1rem;
   margin: 1.5rem auto 0;
 }
@@ -1667,9 +1668,6 @@ h2 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .sdg-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 47.999rem) {
@@ -1734,11 +1732,6 @@ h2 {
 
   .sdg-block {
     margin-top: 3.5rem;
-  }
-
-  .sdg-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
   }
 
   .sdg-tier-heading {
@@ -1989,9 +1982,6 @@ h2 {
     margin: 0 auto;
   }
 
-  .sdg-grid {
-    grid-template-columns: repeat(4, minmax(0, 10rem));
-  }
 }
 
 /* Laptop / desktop: footer in four columns */
