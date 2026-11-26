@@ -39,7 +39,7 @@ $FIELDS = [
     'product_interest'   => ['Product of interest', 60, ['Solar-Induction Cooking System', '450W Solar Panels', 'Not sure yet']],
     'payment_preference' => ['Payment preference', 40, ['Pay-as-you-go', 'Full payment', 'Not sure yet']],
     'business_type'      => ['Business type', 60, [
-        'Solar / electronics dealer', 'Retail shop', 'SACCO / microfinance', 'Agent network', 'NGO / implementation partner', 'Other',
+        'Solar / electronics dealer', 'Retail store', 'SACCO / microfinance', 'Agent network', 'NGO / implementation partner', 'Other',
     ]],
     'institution_type'   => ['Institution type', 60, [
         'School', 'College / university', 'Clinic / hospital', 'Church / faith organisation', 'Community group', 'Other',
