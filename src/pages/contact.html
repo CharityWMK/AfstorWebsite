@@ -1,0 +1,128 @@
+<!--
+title: Contact Afstor Energy | Sales, partnerships, investors and support
+description: Contact Afstor Energy in Nairobi. Call +254 181 100 200, WhatsApp us, email office@afstor.com or send an enquiry and we'll route it to the right team.
+nav: contact
+whatsapp: Hi Afstor, I have an enquiry.
+-->
+    <section class="page-hero page-hero--compact" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+        <p class="eyebrow">Get in touch</p>
+        <h1 id="page-title" class="h-display">Let&rsquo;s talk clean cooking.</h1>
+        <p class="lead">Tell us who you are and what you need. We&rsquo;ll route your enquiry to the right team: sales, partnerships, or investor and government relations.</p>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-label="Contact options">
+      <div class="container">
+        <ul class="contact-cards">
+          <li><a class="contact-card" href="https://wa.me/254181100200?text={{whatsapp}}" target="_blank" rel="noopener noreferrer"><span class="icon-badge icon-badge--wa">{{i:whatsapp}}</span><strong>WhatsApp</strong><span>+254 181 100 200</span></a></li>
+          <li><a class="contact-card" href="tel:+254181100200"><span class="icon-badge">{{i:phone}}</span><strong>Office</strong><span>+254 181 100 200</span></a></li>
+          <li><a class="contact-card" href="tel:+254182241801"><span class="icon-badge">{{i:phone}}</span><strong>Sales</strong><span>+254 182 241 801</span></a></li>
+          <li><a class="contact-card" href="mailto:sales.ke@afstor.com"><span class="icon-badge">{{i:mail}}</span><strong>Sales email</strong><span>sales.ke@afstor.com</span></a></li>
+          <li><a class="contact-card" href="mailto:office@afstor.com"><span class="icon-badge">{{i:mail}}</span><strong>General email</strong><span>office@afstor.com</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--canvas" id="enquiry" aria-labelledby="enquiry-title">
+      <div class="container form-layout">
+        <div class="form-intro">
+          <p class="eyebrow">Send an enquiry</p>
+          <h2 id="enquiry-title" class="h-xl">Who are you contacting us as?</h2>
+          <p class="lead">Your choice decides which team receives your message.</p>
+          <ul class="routing-list">
+            <li>{{i:home}}<span><strong>Households &amp; support</strong> &rarr; Sales &amp; service team</span></li>
+            <li>{{i:store}}<span><strong>Distributors</strong> &rarr; Partnerships team</span></li>
+            <li>{{i:school}}<span><strong>Institutions</strong> &rarr; Institutional sales</span></li>
+            <li>{{i:globe}}<span><strong>Development organisations</strong> &rarr; Partnerships lead</span></li>
+            <li>{{i:chart}}<span><strong>Investors &amp; government</strong> &rarr; Leadership team</span></li>
+          </ul>
+        </div>
+
+        <form class="enquiry-form card" action="send-contact.php" method="post" novalidate data-enquiry-form data-segmented>
+          <div class="form-grid">
+            <div class="field field--full">
+              <label for="f-audience">I am a&hellip; <span aria-hidden="true">*</span></label>
+              <select id="f-audience" name="audience" required aria-describedby="f-audience-error">
+                <option value="">Choose one</option>
+                <option value="household">Household customer</option>
+                <option value="support">Existing customer needing support</option>
+                <option value="distributor">Distributor or implementation partner</option>
+                <option value="institution">School or institution</option>
+                <option value="development">Development organisation (NGO, foundation, agency)</option>
+                <option value="investor">Investor, climate-finance partner or government</option>
+                <option value="general">Something else</option>
+              </select>
+              <span class="field-error" id="f-audience-error"></span>
+            </div>
+<!-- @include form-contact-fields -->
+
+            <fieldset class="audience-fields" data-audience-fields="household" hidden disabled>
+              <legend class="sr-only">Household details</legend>
+              <div class="field"><label for="h-county">County / town <span aria-hidden="true">*</span></label><input id="h-county" name="county" type="text" maxlength="80" required aria-describedby="h-county-error"><span class="field-error" id="h-county-error"></span></div>
+              <div class="field"><label for="h-request">I&rsquo;d like to</label><select id="h-request" name="request_type"><option>Buy a system</option><option>Book a product demonstration</option></select></div>
+              <div class="field"><label for="h-payment">How would you like to pay?</label><select id="h-payment" name="payment_preference"><option>Pay-as-you-go</option><option>Full payment</option><option>Not sure yet</option></select></div>
+              <div class="field"><label for="h-product">Product of interest</label><select id="h-product" name="product_interest"><option>Solar-Induction Cooking System</option><option>450W Solar Panels</option><option>Not sure yet</option></select></div>
+            </fieldset>
+
+            <fieldset class="audience-fields" data-audience-fields="support" hidden disabled>
+              <legend class="sr-only">Support details</legend>
+              <div class="field field--full"><label for="s-county">County / town</label><input id="s-county" name="county" type="text" maxlength="80"></div>
+            </fieldset>
+
+            <fieldset class="audience-fields" data-audience-fields="distributor" hidden disabled>
+              <legend class="sr-only">Distributor details</legend>
+              <div class="field"><label for="d-org">Business name <span aria-hidden="true">*</span></label><input id="d-org" name="organisation" type="text" maxlength="160" required aria-describedby="d-org-error"><span class="field-error" id="d-org-error"></span></div>
+              <div class="field"><label for="d-county">Territory / county <span aria-hidden="true">*</span></label><input id="d-county" name="county" type="text" maxlength="80" required aria-describedby="d-county-error"><span class="field-error" id="d-county-error"></span></div>
+              <div class="field field--full"><label for="d-btype">Type of business</label><select id="d-btype" name="business_type"><option>Solar / electronics dealer</option><option>Retail shop</option><option>SACCO / microfinance</option><option>Agent network</option><option>NGO / implementation partner</option><option>Other</option></select></div>
+            </fieldset>
+
+            <fieldset class="audience-fields" data-audience-fields="institution" hidden disabled>
+              <legend class="sr-only">Institution details</legend>
+              <div class="field"><label for="i-org">Institution name <span aria-hidden="true">*</span></label><input id="i-org" name="organisation" type="text" maxlength="160" required aria-describedby="i-org-error"><span class="field-error" id="i-org-error"></span></div>
+              <div class="field"><label for="i-type">Type of institution</label><select id="i-type" name="institution_type"><option>School</option><option>College / university</option><option>Clinic / hospital</option><option>Church / faith organisation</option><option>Community group</option><option>Other</option></select></div>
+              <div class="field"><label for="i-county">County <span aria-hidden="true">*</span></label><input id="i-county" name="county" type="text" maxlength="80" required aria-describedby="i-county-error"><span class="field-error" id="i-county-error"></span></div>
+              <div class="field"><label for="i-people">People fed daily</label><input id="i-people" name="people_served" type="text" inputmode="numeric" maxlength="20"></div>
+            </fieldset>
+
+            <fieldset class="audience-fields" data-audience-fields="development" hidden disabled>
+              <legend class="sr-only">Organisation details</legend>
+              <div class="field"><label for="v-org">Organisation <span aria-hidden="true">*</span></label><input id="v-org" name="organisation" type="text" maxlength="160" required aria-describedby="v-org-error"><span class="field-error" id="v-org-error"></span></div>
+              <div class="field"><label for="v-type">Organisation type</label><select id="v-type" name="org_type"><option>NGO</option><option>Foundation</option><option>UN agency / multilateral</option><option>Bilateral donor</option><option>Community-based organisation</option><option>Other</option></select></div>
+              <div class="field field--full"><label for="v-scale">Target scale</label><select id="v-scale" name="programme_scale"><option>Under 100 households</option><option>100 – 1,000 households</option><option>1,000 – 10,000 households</option><option>More than 10,000 households</option><option>Institutions only</option><option>Not yet defined</option></select></div>
+            </fieldset>
+
+            <fieldset class="audience-fields" data-audience-fields="investor" hidden disabled>
+              <legend class="sr-only">Investor or government details</legend>
+              <div class="field"><label for="n-org">Organisation <span aria-hidden="true">*</span></label><input id="n-org" name="organisation" type="text" maxlength="160" required aria-describedby="n-org-error"><span class="field-error" id="n-org-error"></span></div>
+              <div class="field"><label for="n-type">Organisation type</label><select id="n-type" name="investor_type"><option>Impact investor / VC</option><option>Development finance institution</option><option>Climate / carbon finance</option><option>Bank / debt provider</option><option>National government</option><option>County government</option><option>Other</option></select></div>
+              <div class="field"><label for="n-interest">Area of interest</label><select id="n-interest" name="interest"><option>Equity</option><option>Debt / PAYG working capital</option><option>Carbon credits / results-based finance</option><option>Government or county programme</option><option>Other</option></select></div>
+              <div class="field"><label for="n-request">I&rsquo;d like to</label><select id="n-request" name="request_type"><option>Request investor information</option><option>Schedule a meeting</option></select></div>
+            </fieldset>
+
+            <div class="field field--full">
+              <label for="f-message">Message <span class="optional" data-message-optional>(optional)</span></label>
+              <textarea id="f-message" name="message" rows="5" maxlength="3000" aria-describedby="f-message-error"></textarea>
+              <span class="field-error" id="f-message-error"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Send enquiry</button>
+<!-- @include form-footer -->
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="visit-title">
+      <div class="container split">
+        <div class="split-copy">
+          <p class="eyebrow">Visit us</p>
+          <h2 id="visit-title" class="h-xl">38988 Infinity Industrial Park, Nairobi</h2>
+          <p class="lead">Our office and assembly facility. Please call ahead so the right person is available to meet you.</p>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Infinity+Industrial+Park+Nairobi+Kenya" target="_blank" rel="noopener noreferrer">{{i:pin}} Open in Google Maps</a>
+        </div>
+        <div class="map-frame">
+          <iframe src="https://www.google.com/maps?q=Infinity+Industrial+Park,+Nairobi,+Kenya&amp;output=embed" title="Map showing Infinity Industrial Park, Nairobi, Kenya" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
