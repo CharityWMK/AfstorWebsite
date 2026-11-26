@@ -1596,3 +1596,46 @@ ul, ol { margin: 0; padding: 0; }
 .ds-table th { color: var(--ink); }
 .ds-table code { color: var(--olive-700); }
 .ds-scroll { overflow-x: auto; }
+
+/* Design-system page: classes replacing inline styles (strict CSP forbids style attributes) */
+.sw-546241 { background: #546241; }
+.sw-99be7f { background: #99BE7F; }
+.sw-c88b2d { background: #C88B2D; }
+.sw-1f271b { background: #1F271B; }
+.sw-435035 { background: #435035; }
+.sw-eaf2e3 { background: #EAF2E3; }
+.sw-8a5b14 { background: #8A5B14; }
+.sw-ffffff { background: #FFFFFF; border-bottom: 1px solid var(--line); }
+.sw-f8f7f3 { background: #F8F7F3; }
+.sw-efede6 { background: #EFEDE6; }
+.sw-e3e1d8 { background: #E3E1D8; }
+.sw-5f6659 { background: #5F6659; }
+.sw-2a3226 { background: #2A3226; }
+.sw-1a2016 { background: #1A2016; }
+.ds-swatches--gap { margin: 1rem 0 2rem; }
+.ds-swatches--top { margin-top: 1rem; }
+.ds-sample { margin: 0; color: var(--ink); font-weight: 800; }
+.ds-sample--h3 { font-size: var(--fs-h3); font-weight: 700; }
+.ds-flush { margin: 0; }
+.ds-label--on-dark { color: rgb(255 255 255 / 60%); }
+.ds-center { align-items: center; }
+.ds-gap-top { margin-top: 1.25rem; }
+.ds-steps-single { grid-template-columns: 1fr !important; }
+.ds-form-demo { max-width: 44rem; }
+
+/* ---------- Forms: consent and CAPTCHA ---------- */
+.field--consent { grid-column: 1 / -1; margin-bottom: 1.25rem; }
+.consent { display: flex; gap: 0.75rem; align-items: flex-start; color: var(--text); font-size: var(--fs-small); font-weight: 500 !important; line-height: 1.55; cursor: pointer; }
+.consent input { flex-shrink: 0; width: 1.25rem; height: 1.25rem; min-height: 0 !important; margin: 0.15rem 0 0; padding: 0; accent-color: var(--olive-600); cursor: pointer; }
+.consent .req { color: var(--color-error); }
+.turnstile-slot:empty { display: none; }
+.turnstile-slot { margin-bottom: 1rem; }
+.footer-bottom a { color: rgb(255 255 255 / 70%); margin-left: 0.5rem; }
+.footer-bottom a:hover { color: var(--white); }
+
+/* ---------- Privacy policy ---------- */
+.prose-page h2 { margin: 2.25rem 0 0.75rem; font-size: 1.35rem; }
+.prose-page h2:first-child { margin-top: 0; }
+.prose-page p, .prose-page li { color: var(--text); }
+.prose-page ul { margin: 0 0 1rem 1.25rem; }
+.prose-page li { margin-bottom: 0.35rem; }

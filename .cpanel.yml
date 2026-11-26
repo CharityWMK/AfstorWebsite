@@ -3,3 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/zpnitnzt/staging.afstor.co.ke/
     - /bin/cp -R * $DEPLOYPATH
+    # "*" skips dot-files, so copy the server security config explicitly.
+    - /bin/cp .htaccess .user.ini $DEPLOYPATH
