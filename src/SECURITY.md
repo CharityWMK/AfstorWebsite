@@ -72,3 +72,28 @@ restore it. cPanel's Errors log names the line.
 - [ ] **Privacy Policy review**: confirm the retention period and wording with management or legal; consider registering with the ODPC if required.
 - [ ] **HSTS preload**: only after HTTPS is confirmed on every afstor.co.ke subdomain.
 - [ ] **Scans after deploy**: securityheaders.com, observatory.mozilla.org, ssllabs.com/ssltest.
+
+## Google Analytics 4 (consent-based)
+
+- **Where:** `analytics.js` (loaded in every page's `<head>`, deferred). The Measurement ID is the
+  `MEASUREMENT_ID` line at the top. It ships as the placeholder `G-XXXXXXXXXX`, which keeps analytics
+  fully off. Replace it with the real ID and redeploy; no rebuild needed.
+- **When it loads:** only on `afstor.co.ke` / `www.afstor.co.ke` (never staging), only with a real ID,
+  and only after the visitor clicks **Accept**. Consent Mode v2 defaults analytics_storage,
+  ad_storage, ad_user_data and ad_personalization to `denied`; Accept updates analytics_storage to
+  `granted`. Google signals and ad personalisation are off; cookies last about 13 months.
+- **Choice:** stored in the browser for 12 months; "Cookie settings" in the footer (and in the
+  Privacy Policy) reopens the banner. Declining removes the `_ga` cookies.
+- **Events (no personal data):** `generate_lead` (`stakeholder_type`: household, distributor_partner,
+  school_institution, development_org, investor_government, or other for the contact page's
+  "Something else"), sent only after the server confirms the enquiry; `select_pathway`
+  (`pathway_name`, `link_location`: hero_selector / who_we_serve_menu), queued and sent on the next
+  page so the click isn't lost when the page unloads; `contact_click` (`method`: whatsapp / phone /
+  email, `link_location`).
+- **CSP:** adds only `https://www.googletagmanager.com` (script-src), the Google Analytics domains
+  (connect-src) and `https://www.google-analytics.com https://www.googletagmanager.com` (img-src).
+- **DebugView:** open any production page with `?ga_debug=1`, accept cookies, and watch
+  GA4 > Admin > DebugView.
+- **GA4 admin (manual):** set data retention to 14 months (Admin > Data settings > Data retention), to
+  match the Privacy Policy; mark `generate_lead` as a key event; register `stakeholder_type`,
+  `pathway_name`, `method` and `link_location` as custom dimensions so they show in reports.

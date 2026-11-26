@@ -1639,3 +1639,32 @@ ul, ol { margin: 0; padding: 0; }
 .prose-page p, .prose-page li { color: var(--text); }
 .prose-page ul { margin: 0 0 1rem 1.25rem; }
 .prose-page li { margin-bottom: 0.35rem; }
+
+/* ---------- Cookie consent banner ---------- */
+.cookie-banner {
+  position: fixed;
+  z-index: 60;
+  left: 1rem;
+  right: 1rem;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  display: grid;
+  gap: 0.9rem;
+  max-width: 34rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  animation: drawer-in 0.3s var(--ease);
+}
+.cookie-banner p { margin: 0; }
+.cookie-actions { display: flex; gap: 0.6rem; justify-content: flex-end; }
+.cookie-actions .btn { min-height: 2.6rem; padding: 0.55rem 1.2rem; font-size: 0.9rem; }
+@media (min-width: 900px) {
+  .cookie-banner { left: 1.5rem; right: auto; bottom: 1.5rem; grid-template-columns: 1fr auto; align-items: center; max-width: 44rem; }
+}
+.footer-bottom a + a { margin-left: 0.75rem; }
+
