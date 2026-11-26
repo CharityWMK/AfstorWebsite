@@ -4,14 +4,14 @@
  * - Consent defaults to "denied" for analytics and all advertising signals.
  * - gtag.js is loaded ONLY when all three are true:
  *     1. the page is on the production site (afstor.co.ke / www.afstor.co.ke), never staging;
- *     2. a real Measurement ID is set below (the G-XXXXXXXXXX placeholder keeps it off);
+ *     2. a real Measurement ID is set below (a placeholder such as G-XXXXXXXXXX keeps it off);
  *     3. the visitor clicked "Accept" in the cookie banner.
  * - The visitor's choice is remembered for 12 months and can be changed via "Cookie settings".
  * - Events carry no personal data: never names, emails, phone numbers or message text.
  * - Add ?ga_debug=1 to a production URL to see hits in GA4 DebugView.
  */
 (() => {
-  const MEASUREMENT_ID = 'G-XXXXXXXXXX'; // <-- replace with the real GA4 Measurement ID
+  const MEASUREMENT_ID = 'G-7QN08Y8K1L'; // GA4 property for afstor.co.ke
   const PRODUCTION_HOSTS = ['www.afstor.co.ke', 'afstor.co.ke'];
   const STORAGE_KEY = 'afstor_cookie_consent';
   const CHOICE_TTL_MS = 365 * 24 * 60 * 60 * 1000;
