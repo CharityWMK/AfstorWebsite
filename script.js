@@ -79,20 +79,35 @@
     }
   });
 
-  /* ---------- Hero rotating word ---------- */
-  const rotator = document.querySelector('[data-rotate]');
-  if (rotator && !reduceMotion) {
-    const words = rotator.dataset.rotate.split('|');
-    const word = rotator.querySelector('.rotator-word');
-    let index = 0;
-    setInterval(() => {
-      word.classList.add('is-out');
-      setTimeout(() => {
-        index = (index + 1) % words.length;
-        word.textContent = words[index];
-        word.classList.remove('is-out');
-      }, 350);
-    }, 2800);
+  /* ---------- Hero rotating phrase ---------- */
+  // Each phrase shows for ~3s, then a 0.6s slide-and-fade (CSS) to the next.
+  // Stops for reduced-motion users and pauses while the tab is hidden.
+  const heroRotator = document.querySelector('[data-hero-rotator]');
+  if (heroRotator && !reduceMotion) {
+    const phrases = [...heroRotator.querySelectorAll('.hero-phrase')];
+    const HOLD = 3000;
+    const SWAP = 600;
+    let current = 0;
+    let timer = null;
+
+    const advance = () => {
+      const leaving = phrases[current];
+      current = (current + 1) % phrases.length;
+      leaving.classList.remove('is-active');
+      leaving.classList.add('is-leaving');
+      phrases[current].classList.remove('is-leaving');
+      phrases[current].classList.add('is-active');
+      setTimeout(() => leaving.classList.remove('is-leaving'), SWAP);
+      schedule();
+    };
+    const schedule = () => { timer = setTimeout(advance, HOLD + SWAP); };
+    const stop = () => { clearTimeout(timer); timer = null; };
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (!timer) schedule();
+    });
+    if (phrases.length > 1) schedule();
   }
 
   /* ---------- Scroll reveal ---------- */
