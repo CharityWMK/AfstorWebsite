@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="script.js?v=8" defer></script>
+  <script src="script.js?v=11" defer></script>
 </head>
 <body data-page="development-partners.html">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -256,7 +256,7 @@
           <div class="form-grid">
               <div class="field">
                 <label for="f-name">Full name <span aria-hidden="true">*</span></label>
-                <input id="f-name" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="f-name-error">
+                <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="f-name-error">
                 <span class="field-error" id="f-name-error"></span>
               </div>
               <div class="field">
@@ -266,13 +266,13 @@
               </div>
               <div class="field">
                 <label for="f-phone">Phone / WhatsApp</label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+254 7…" aria-describedby="f-phone-error">
+                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9 +\-]{9,20}" placeholder="+254 7…" aria-describedby="f-phone-error">
                 <span class="field-error" id="f-phone-error"></span>
               </div>
 
             <div class="field">
               <label for="f-org">Organisation <span aria-hidden="true">*</span></label>
-              <input id="f-org" name="organisation" type="text" maxlength="160" required autocomplete="organization" aria-describedby="f-org-error">
+              <input id="f-org" name="organisation" type="text" maxlength="150" required autocomplete="organization" aria-describedby="f-org-error">
               <span class="field-error" id="f-org-error"></span>
             </div>
             <div class="field">
@@ -303,11 +303,20 @@
             </div>
             <div class="field field--full">
               <label for="f-message">About your programme</label>
-              <textarea id="f-message" name="message" rows="4" maxlength="3000" placeholder="Objectives, timelines, funding model, reporting requirements…"></textarea>
+              <textarea id="f-message" name="message" rows="4" maxlength="2000" placeholder="Objectives, timelines, funding model, reporting requirements…"></textarea>
             </div>
           </div>
+            <div class="field field--consent">
+              <label class="consent">
+                <input id="f-consent" type="checkbox" name="consent" value="yes" required aria-describedby="f-consent-error">
+                <span>I agree that Afstor Energy may use these details to respond to my enquiry, as explained in our <a href="privacy.html" target="_blank">Privacy Policy</a>. <span aria-hidden="true" class="req">*</span></span>
+              </label>
+              <span class="field-error" id="f-consent-error"></span>
+            </div>
+
           <button class="btn btn-primary btn-lg btn-block" type="submit">Collaborate With Us</button>
             <input type="hidden" name="source_page" value="development-partners.html">
+            <div class="turnstile-slot" data-turnstile></div>
             <div class="form-honeypot" aria-hidden="true">
               <label for="f-website">Leave this field empty</label>
               <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -385,7 +394,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span data-year>2026</span> Afstor Energy Limited. All rights reserved.</p>
+        <p>&copy; <span data-year>2026</span> Afstor Energy Limited. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
         <p>Clean energy &middot; Smart cooking</p>
       </div>
     </div>

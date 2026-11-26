@@ -1,0 +1,90 @@
+# =============================================================================
+# Afstor Energy website: security configuration (Apache 2.4 / LiteSpeed, cPanel)
+# Applies to staging and production. Staging-only rules are keyed on the host name,
+# so nothing needs to be removed when the site goes live.
+# See src/SECURITY.md for what each rule does and how to change it.
+# =============================================================================
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ServerSignature Off
+AddDefaultCharset utf-8
+
+# ---- Staging detection (any host starting with "staging." or "www.staging.") ----
+SetEnvIfNoCase Host "^(www\.)?staging\." AFSTOR_STAGING=1
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Force HTTPS with a permanent redirect (also works behind proxies such as Cloudflare).
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+  # 2. Staging serves a "disallow everything" robots.txt; production serves the normal one.
+  RewriteCond %{HTTP_HOST} ^(www\.)?staging\. [NC]
+  RewriteRule ^robots\.txt$ robots-staging.txt [L]
+
+  # 3. Block hidden files and folders (.git, .env, .htaccess, .user.ini, .cpanel.yml, .github ...),
+  #    except /.well-known/ which SSL certificate renewal needs.
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule (^|/)\. - [F,L]
+
+  # 4. Block build sources and internal documentation.
+  RewriteRule ^src(/|$) - [F,L]
+
+  # 5. Never execute scripts from the images folder.
+  RewriteRule ^images/.*\.(php\d?|phtml|phar|cgi|pl|py|sh)$ - [F,L,NC]
+</IfModule>
+
+# ---- Block sensitive file types anywhere (config, source, logs, backups, archives) ----
+<FilesMatch "(?i)\.(md|py|pyc|yml|yaml|ini|conf|cfg|log|sql|sqlite|db|bak|backup|old|orig|save|swp|tmp|dist|zip|tar|gz|tgz|7z|rar|sh|env|lock|json|psd)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^(error_log|php_errorlog|composer\.(json|lock)|package(-lock)?\.json|Dockerfile|Makefile)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  # Don't reveal server software or versions.
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+
+  # HTTPS for one year, including subdomains (browsers ignore this header on plain HTTP).
+  # Add "; preload" only once HTTPS is confirmed stable on every afstor.co.ke subdomain.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Content Security Policy.
+  # STEP 1 (current): Report-Only. Violations are logged by /csp-report.php, nothing is blocked.
+  # STEP 2: once the logs are clean, change "Content-Security-Policy-Report-Only" to
+  #         "Content-Security-Policy" on the line below (keep the policy text identical).
+  # The sha256 value allows the one tiny inline script in the page <head>; src/build.py
+  # checks it still matches whenever the site is rebuilt.
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.linkedin.com https://www.google.com https://challenges.cloudflare.com; form-action 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; manifest-src 'self'; upgrade-insecure-requests; report-uri /csp-report.php"
+
+  # Staging must never appear in search results.
+  Header always set X-Robots-Tag "noindex, nofollow" env=AFSTOR_STAGING
+
+  # Form and report endpoints are never cached.
+  <FilesMatch "\.php$">
+    Header always set Cache-Control "no-store"
+  </FilesMatch>
+</IfModule>
+
+# ---- PHP: never show errors to visitors (when PHP runs as an Apache module) ----
+<IfModule mod_php.c>
+  php_flag display_errors Off
+  php_flag display_startup_errors Off
+  php_flag log_errors On
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag display_errors Off
+  php_flag display_startup_errors Off
+  php_flag log_errors On
+</IfModule>

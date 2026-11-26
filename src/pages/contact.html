@@ -73,29 +73,29 @@ whatsapp: Hi Afstor, I have an enquiry.
 
             <fieldset class="audience-fields" data-audience-fields="distributor" hidden disabled>
               <legend class="sr-only">Distributor details</legend>
-              <div class="field"><label for="d-org">Business name <span aria-hidden="true">*</span></label><input id="d-org" name="organisation" type="text" maxlength="160" required aria-describedby="d-org-error"><span class="field-error" id="d-org-error"></span></div>
+              <div class="field"><label for="d-org">Business name <span aria-hidden="true">*</span></label><input id="d-org" name="organisation" type="text" maxlength="150" required aria-describedby="d-org-error"><span class="field-error" id="d-org-error"></span></div>
               <div class="field"><label for="d-county">Territory / county <span aria-hidden="true">*</span></label><input id="d-county" name="county" type="text" maxlength="80" required aria-describedby="d-county-error"><span class="field-error" id="d-county-error"></span></div>
               <div class="field field--full"><label for="d-btype">Type of business</label><select id="d-btype" name="business_type"><option>Solar / electronics dealer</option><option>Retail store</option><option>SACCO / microfinance</option><option>Agent network</option><option>NGO / implementation partner</option><option>Other</option></select></div>
             </fieldset>
 
             <fieldset class="audience-fields" data-audience-fields="institution" hidden disabled>
               <legend class="sr-only">Institution details</legend>
-              <div class="field"><label for="i-org">Institution name <span aria-hidden="true">*</span></label><input id="i-org" name="organisation" type="text" maxlength="160" required aria-describedby="i-org-error"><span class="field-error" id="i-org-error"></span></div>
+              <div class="field"><label for="i-org">Institution name <span aria-hidden="true">*</span></label><input id="i-org" name="organisation" type="text" maxlength="150" required aria-describedby="i-org-error"><span class="field-error" id="i-org-error"></span></div>
               <div class="field"><label for="i-type">Type of institution</label><select id="i-type" name="institution_type"><option>School</option><option>College / university</option><option>Clinic / hospital</option><option>Church / faith organisation</option><option>Community group</option><option>Other</option></select></div>
               <div class="field"><label for="i-county">County <span aria-hidden="true">*</span></label><input id="i-county" name="county" type="text" maxlength="80" required aria-describedby="i-county-error"><span class="field-error" id="i-county-error"></span></div>
-              <div class="field"><label for="i-people">People fed daily</label><input id="i-people" name="people_served" type="text" inputmode="numeric" maxlength="20"></div>
+              <div class="field"><label for="i-people">People fed daily</label><input id="i-people" name="people_served" type="number" inputmode="numeric" min="1" max="1000000" step="1"></div>
             </fieldset>
 
             <fieldset class="audience-fields" data-audience-fields="development" hidden disabled>
               <legend class="sr-only">Organisation details</legend>
-              <div class="field"><label for="v-org">Organisation <span aria-hidden="true">*</span></label><input id="v-org" name="organisation" type="text" maxlength="160" required aria-describedby="v-org-error"><span class="field-error" id="v-org-error"></span></div>
+              <div class="field"><label for="v-org">Organisation <span aria-hidden="true">*</span></label><input id="v-org" name="organisation" type="text" maxlength="150" required aria-describedby="v-org-error"><span class="field-error" id="v-org-error"></span></div>
               <div class="field"><label for="v-type">Organisation type</label><select id="v-type" name="org_type"><option>NGO</option><option>Foundation</option><option>UN agency / multilateral</option><option>Bilateral donor</option><option>Community-based organisation</option><option>Other</option></select></div>
               <div class="field field--full"><label for="v-scale">Target scale</label><select id="v-scale" name="programme_scale"><option>Under 100 households</option><option>100 – 1,000 households</option><option>1,000 – 10,000 households</option><option>More than 10,000 households</option><option>Institutions only</option><option>Not yet defined</option></select></div>
             </fieldset>
 
             <fieldset class="audience-fields" data-audience-fields="investor" hidden disabled>
               <legend class="sr-only">Investor or government details</legend>
-              <div class="field"><label for="n-org">Organisation <span aria-hidden="true">*</span></label><input id="n-org" name="organisation" type="text" maxlength="160" required aria-describedby="n-org-error"><span class="field-error" id="n-org-error"></span></div>
+              <div class="field"><label for="n-org">Organisation <span aria-hidden="true">*</span></label><input id="n-org" name="organisation" type="text" maxlength="150" required aria-describedby="n-org-error"><span class="field-error" id="n-org-error"></span></div>
               <div class="field"><label for="n-type">Organisation type</label><select id="n-type" name="investor_type"><option>Impact investor / VC</option><option>Development finance institution</option><option>Climate / carbon finance</option><option>Bank / debt provider</option><option>National government</option><option>County government</option><option>Other</option></select></div>
               <div class="field"><label for="n-interest">Area of interest</label><select id="n-interest" name="interest"><option>Equity</option><option>Debt / PAYG working capital</option><option>Carbon credits / results-based finance</option><option>Government or county programme</option><option>Other</option></select></div>
               <div class="field"><label for="n-request">I&rsquo;d like to</label><select id="n-request" name="request_type"><option>Request investor information</option><option>Schedule a meeting</option></select></div>
@@ -103,10 +103,11 @@ whatsapp: Hi Afstor, I have an enquiry.
 
             <div class="field field--full">
               <label for="f-message">Message <span class="optional" data-message-optional>(optional)</span></label>
-              <textarea id="f-message" name="message" rows="5" maxlength="3000" aria-describedby="f-message-error"></textarea>
+              <textarea id="f-message" name="message" rows="5" maxlength="2000" aria-describedby="f-message-error"></textarea>
               <span class="field-error" id="f-message-error"></span>
             </div>
           </div>
+<!-- @include form-consent -->
           <button class="btn btn-primary btn-lg btn-block" type="submit">Send enquiry</button>
 <!-- @include form-footer -->
         </form>

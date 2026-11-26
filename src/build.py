@@ -25,6 +25,8 @@ Run:  python src/build.py
 """
 from __future__ import annotations
 
+import base64
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -119,11 +121,28 @@ def main() -> int:
     if not pages:
         print("No pages found in", PAGES)
         return 1
+    htaccess_path = ROOT / ".htaccess"
+    htaccess = htaccess_path.read_text(encoding="utf-8") if htaccess_path.exists() else ""
     for page in pages:
+        html = build_page(page, sprite_ids)
+        check_csp(page.name, html, htaccess)
         out = ROOT / page.name
-        out.write_text(build_page(page, sprite_ids), encoding="utf-8", newline="\n")
+        out.write_text(html, encoding="utf-8", newline="\n")
         print(f"built {out.relative_to(ROOT)}")
     return 0
+
+
+def check_csp(name: str, html: str, htaccess: str) -> None:
+    """Stop the build if a page would break the Content-Security-Policy in .htaccess:
+    inline style attributes, inline event handlers, or an inline script whose hash isn't allowed."""
+    if re.search(r"<[^>]+\sstyle\s*=", html):
+        raise ValueError(f"{name}: inline style attribute found; use a CSS class (the CSP blocks inline styles)")
+    if re.search(r"<[^>]+\son[a-z]+\s*=", html, re.I):
+        raise ValueError(f"{name}: inline event handler (e.g. onclick=) found; attach it in script.js instead")
+    for body in re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", html, re.S):
+        digest = "sha256-" + base64.b64encode(hashlib.sha256(body.encode("utf-8")).digest()).decode()
+        if htaccess and f"'{digest}'" not in htaccess:
+            raise ValueError(f"{name}: inline script changed; add '{digest}' to script-src in .htaccess")
 
 
 if __name__ == "__main__":

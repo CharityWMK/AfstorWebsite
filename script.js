@@ -157,9 +157,10 @@
     const out = calc.querySelector('[data-calc-out]');
     const fmt = new Intl.NumberFormat('en-KE');
     const update = () => {
-      const weekly = Math.max(0, Number(input.value) || 0);
+      const weekly = Math.min(100000000, Math.max(0, Number(input.value) || 0));
       out.textContent = `KES ${fmt.format(Math.round(weekly * 52))}`;
     };
+    calc.addEventListener('submit', (e) => e.preventDefault());
     input.addEventListener('input', update);
     update();
   });
@@ -167,23 +168,61 @@
   /* ---------- Footer year ---------- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- Enquiry forms ---------- */
+  /* ---------- Enquiry forms ----------
+     Client-side checks are only for a friendly experience; send-contact.php re-validates
+     everything. User input is only ever written to the page with textContent. */
   const forms = [...document.querySelectorAll('[data-enquiry-form]')];
+  const ENDPOINT = 'send-contact.php';
+  const MIN_FILL_MS = 3200;
+
+  const TEXT_RE = /^[\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N} &.,'’()/:+#%-]*$/u;
+  const PLACE_RE = /^[\p{L}\p{M}][\p{L}\p{M}\p{N} ,.'’()/-]*$/u;
+  const RULES = {
+    name: { re: /^[\p{L}\p{M}][\p{L}\p{M}' .’-]*$/u, msg: 'Use letters, spaces, hyphens or apostrophes only.' },
+    organisation: { re: TEXT_RE, msg: 'Please remove unusual symbols.' },
+    role: { re: TEXT_RE, msg: 'Please remove unusual symbols.' },
+    current_reach: { re: TEXT_RE, msg: 'Please remove unusual symbols.' },
+    county: { re: PLACE_RE, msg: 'Use letters and spaces only.' },
+    geography: { re: PLACE_RE, msg: 'Use letters and spaces only.' }
+  };
+
+  /* Kenyan formats (07xx, 01xx, +254, 254) and international numbers. Mirrors the server rule. */
+  function isValidPhone(value) {
+    if (!/^\+?[0-9][0-9 -]{6,18}[0-9]$/.test(value)) return false;
+    const digits = value.replace(/\D/g, '');
+    if (value.startsWith('+')) {
+      return digits.startsWith('254') ? /^254[17]\d{8}$/.test(digits) : digits.length >= 8 && digits.length <= 15;
+    }
+    if (digits.startsWith('0')) return /^0[17]\d{8}$/.test(digits);
+    return /^254[17]\d{8}$/.test(digits);
+  }
 
   const activeFields = (form) => [...form.querySelectorAll('input, select, textarea')]
-    .filter((f) => f.type !== 'hidden' && f.name !== 'website' && !f.matches(':disabled'));
+    .filter((f) => f.type !== 'hidden' && f.name && f.name !== 'website' && !f.matches(':disabled'));
 
   function validateField(field) {
-    const value = field.value.trim();
+    const isBox = field.type === 'checkbox';
+    const value = isBox ? '' : field.value.trim();
+    const rule = RULES[field.name];
     let message = '';
-    if (field.required && !value) {
+    if (isBox) {
+      if (field.required && !field.checked) message = 'Please tick this box so we can respond to your enquiry.';
+    } else if (field.required && !value) {
       message = 'This field is required.';
+    } else if (value && field.maxLength > 0 && value.length > field.maxLength) {
+      message = `Please use no more than ${field.maxLength} characters.`;
     } else if (field.name === 'name' && value.length < 2) {
       message = 'Enter a name with at least 2 characters.';
-    } else if (field.name === 'email' && value && !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value)) {
+    } else if (field.name === 'email' && value && !/^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]{2,}$/.test(value)) {
       message = 'Enter a valid email address.';
-    } else if (field.name === 'phone' && value && !/^[0-9+\-\s().]{7,40}$/.test(value)) {
-      message = 'Enter a valid phone number.';
+    } else if (field.name === 'phone' && value && !isValidPhone(value)) {
+      message = 'Enter a valid phone number, e.g. 0712 345 678 or +254 712 345 678.';
+    } else if (field.type === 'number' && value && (!/^\d+$/.test(value) || Number(value) < Number(field.min || 0) || Number(value) > Number(field.max || Infinity))) {
+      message = 'Enter a whole number.';
+    } else if (rule && value && !rule.re.test(value)) {
+      message = rule.msg;
+    } else if (field.tagName === 'SELECT' && value && ![...field.options].some((o) => o.value === field.value)) {
+      message = 'Choose one of the listed options.';
     } else if (field.name === 'message' && field.required && value.length < 10) {
       message = 'Please tell us a little more (at least 10 characters).';
     }
@@ -216,11 +255,71 @@
       if (optionalTag) optionalTag.hidden = needsMessage;
     };
 
+    /* ?audience= can only pick one of the existing options; it is never written into the page. */
     const requested = new URLSearchParams(window.location.search).get('audience');
     if (requested && [...select.options].some((o) => o.value === requested)) select.value = requested;
     select.addEventListener('change', apply);
     apply();
   }
+
+  /* CSRF token (and optional Cloudflare Turnstile site key) for this browser session. */
+  const session = { token: '', siteKey: '', loadedAt: 0 };
+  function loadToken() {
+    return fetch(`${ENDPOINT}?action=token`, { credentials: 'same-origin', cache: 'no-store', headers: { Accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('token'))))
+      .then((data) => {
+        session.token = typeof data.token === 'string' ? data.token : '';
+        session.siteKey = typeof data.turnstile_site_key === 'string' ? data.turnstile_site_key : '';
+        session.loadedAt = Date.now();
+        if (session.siteKey) setupTurnstile();
+      })
+      .catch(() => { session.token = ''; });
+  }
+
+  /* Cloudflare Turnstile: only loaded once a site key is configured on the server. */
+  const widgets = new Map();
+  function setupTurnstile() {
+    const render = () => forms.forEach((form) => {
+      const slot = form.querySelector('[data-turnstile]');
+      if (!slot || widgets.has(form) || !window.turnstile) return;
+      widgets.set(form, window.turnstile.render(slot, { sitekey: session.siteKey, appearance: 'interaction-only', action: 'enquiry' }));
+    });
+    if (window.turnstile) { render(); return; }
+    if (document.querySelector('script[data-turnstile-api]')) return;
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.dataset.turnstileApi = '';
+    script.addEventListener('load', render);
+    document.head.appendChild(script);
+  }
+  const turnstileToken = (form) => (widgets.has(form) && window.turnstile ? window.turnstile.getResponse(widgets.get(form)) || '' : '');
+  const resetTurnstile = (form) => { if (widgets.has(form) && window.turnstile) window.turnstile.reset(widgets.get(form)); };
+
+  const wait = (ms) => new Promise((resolve) => { setTimeout(resolve, ms); });
+
+  async function postEnquiry(form) {
+    const payload = Object.fromEntries(new FormData(form));
+    delete payload['cf-turnstile-response']; // Turnstile's own hidden input; we send it under our field name
+    payload.csrf_token = session.token;
+    const captcha = turnstileToken(form);
+    if (captcha) payload.cf_turnstile_response = captcha;
+    const response = await fetch(form.action, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    let result;
+    try {
+      result = await response.json();
+    } catch {
+      throw new Error('We could not send your enquiry right now. Please call or WhatsApp us on +254 181 100 200.');
+    }
+    return { response, result };
+  }
+
+  if (forms.length) loadToken();
 
   forms.forEach((form) => {
     if (form.hasAttribute('data-segmented')) setupSegmented(form);
@@ -228,8 +327,11 @@
     form.addEventListener('input', (e) => {
       if (e.target.getAttribute('aria-invalid') === 'true') validateField(e.target);
     });
+    form.addEventListener('change', (e) => {
+      if (e.target.type === 'checkbox') validateField(e.target);
+    });
     form.addEventListener('focusout', (e) => {
-      if (e.target.matches('input, select, textarea') && e.target.value.trim()) validateField(e.target);
+      if (e.target.matches('input, select, textarea') && e.target.type !== 'checkbox' && e.target.value.trim()) validateField(e.target);
     });
 
     form.addEventListener('submit', async (event) => {
@@ -254,27 +356,33 @@
       button.textContent = 'Sending…';
 
       try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form)))
-        });
-        let result;
-        try {
-          result = await response.json();
-        } catch {
-          throw new Error('The server returned an unexpected response. Please call or WhatsApp us instead.');
+        if (!session.token) await loadToken();
+        const early = MIN_FILL_MS - (Date.now() - session.loadedAt);
+        if (early > 0) await wait(early);
+
+        let { response, result } = await postEnquiry(form);
+        if (!result.ok && (result.code === 'token' || result.code === 'too_fast')) {
+          /* Session expired (e.g. the page was left open for hours): fresh token, retry once. */
+          await loadToken();
+          await wait(MIN_FILL_MS);
+          ({ response, result } = await postEnquiry(form));
         }
         if (!response.ok || !result.ok) throw new Error(result.message || 'We could not send your enquiry. Please try again.');
 
+        if (typeof result.token === 'string' && result.token) session.token = result.token;
         const name = (form.querySelector('[name="name"]')?.value || '').trim().split(' ')[0];
         if (success) success.textContent = `Thank you${name ? `, ${name}` : ''}. ${result.message}`;
         form.reset();
         clearErrors(form);
         if (form.hasAttribute('data-segmented')) form.querySelector('select[name="audience"]').dispatchEvent(new Event('change'));
       } catch (error) {
-        if (failure) failure.textContent = error instanceof Error ? error.message : 'We could not send your enquiry. Please try again.';
+        if (failure) {
+          failure.textContent = error instanceof Error && error.message && error.message !== 'token'
+            ? error.message
+            : 'We could not send your enquiry. Please try again, or call or WhatsApp us on +254 181 100 200.';
+        }
       } finally {
+        resetTurnstile(form);
         button.disabled = false;
         button.removeAttribute('aria-busy');
         button.textContent = label;

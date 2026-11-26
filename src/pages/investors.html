@@ -143,7 +143,7 @@ whatsapp: Hello Afstor, I'd like to request investor information.
 <!-- @include form-contact-fields -->
             <div class="field">
               <label for="f-org">Organisation <span aria-hidden="true">*</span></label>
-              <input id="f-org" name="organisation" type="text" maxlength="160" required autocomplete="organization" aria-describedby="f-org-error">
+              <input id="f-org" name="organisation" type="text" maxlength="150" required autocomplete="organization" aria-describedby="f-org-error">
               <span class="field-error" id="f-org-error"></span>
             </div>
             <div class="field">
@@ -174,9 +174,10 @@ whatsapp: Hello Afstor, I'd like to request investor information.
             </div>
             <div class="field field--full">
               <label for="f-message">Message <span class="optional">(optional)</span></label>
-              <textarea id="f-message" name="message" rows="4" maxlength="3000" placeholder="Investment focus, ticket size, programme scope, preferred meeting times…"></textarea>
+              <textarea id="f-message" name="message" rows="4" maxlength="2000" placeholder="Investment focus, ticket size, programme scope, preferred meeting times…"></textarea>
             </div>
           </div>
+<!-- @include form-consent -->
           <button class="btn btn-primary btn-lg btn-block" type="submit">Send request</button>
 <!-- @include form-footer -->
         </form>

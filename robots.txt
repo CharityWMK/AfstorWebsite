@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /send-contact.php
+Disallow: /csp-report.php
+Disallow: /design-system.html
+Disallow: /src/

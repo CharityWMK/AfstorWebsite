@@ -61,7 +61,7 @@ whatsapp: Hi Afstor, I'd like a quote for solar cooking at our institution.
             <li>{{i:check}} Up to 4 hours of cooking after sunset per system</li>
           </ul>
         </div>
-        <form class="calc card reveal" data-savings-calc aria-labelledby="calc-title" onsubmit="return false">
+        <form class="calc card reveal" data-savings-calc aria-labelledby="calc-title">
           <h3 id="calc-title">Estimate your yearly fuel spend</h3>
           <div class="field">
             <label for="calc-weekly">What does your kitchen spend on fuel each week? (KES)</label>
@@ -110,7 +110,7 @@ whatsapp: Hi Afstor, I'd like a quote for solar cooking at our institution.
 <!-- @include form-contact-fields -->
             <div class="field">
               <label for="f-org">Institution name <span aria-hidden="true">*</span></label>
-              <input id="f-org" name="organisation" type="text" maxlength="160" required autocomplete="organization" aria-describedby="f-org-error">
+              <input id="f-org" name="organisation" type="text" maxlength="150" required autocomplete="organization" aria-describedby="f-org-error">
               <span class="field-error" id="f-org-error"></span>
             </div>
             <div class="field">
@@ -131,7 +131,7 @@ whatsapp: Hi Afstor, I'd like a quote for solar cooking at our institution.
             </div>
             <div class="field">
               <label for="f-people">People fed daily</label>
-              <input id="f-people" name="people_served" type="text" inputmode="numeric" maxlength="20" placeholder="e.g. 450">
+              <input id="f-people" name="people_served" type="number" inputmode="numeric" min="1" max="1000000" step="1" placeholder="e.g. 450">
             </div>
             <div class="field">
               <label for="f-fuel">Current cooking fuel</label>
@@ -145,9 +145,10 @@ whatsapp: Hi Afstor, I'd like a quote for solar cooking at our institution.
             </div>
             <div class="field field--full">
               <label for="f-message">Anything else? <span class="optional">(optional)</span></label>
-              <textarea id="f-message" name="message" rows="4" maxlength="3000" placeholder="Meals per day, kitchen size, timeline…"></textarea>
+              <textarea id="f-message" name="message" rows="4" maxlength="2000" placeholder="Meals per day, kitchen size, timeline…"></textarea>
             </div>
           </div>
+<!-- @include form-consent -->
           <button class="btn btn-primary btn-lg btn-block" type="submit">Request an Institutional Quote</button>
 <!-- @include form-footer -->
         </form>

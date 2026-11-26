@@ -18,6 +18,7 @@ Where every piece of the previous one-page site now lives, what was newly writte
 | Insights | `news.html` | Blog: featured SOLCO story, listing (SOLCO + video card), LinkedIn |
 | SOLCO article | `news-solco-partnership.html` | Partnership announcement with live LinkedIn embed, commitments strip, quote, share buttons |
 | Contact | `contact.html` | Contact cards, segmented enquiry form (routes by stakeholder), map |
+| Privacy Policy | `privacy.html` | Kenya Data Protection Act notice; linked from every form's consent box and the footer |
 | Design system | `design-system.html` | Internal reference (not indexed by search engines) |
 
 Pathways are reachable from: the home hero ("Partner With Us" → pathway selector), the "Who We Serve" menu, the footer, and the strip at the bottom of every pathway page.

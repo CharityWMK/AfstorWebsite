@@ -1,6 +1,6 @@
               <div class="field">
                 <label for="f-name">Full name <span aria-hidden="true">*</span></label>
-                <input id="f-name" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="f-name-error">
+                <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="f-name-error">
                 <span class="field-error" id="f-name-error"></span>
               </div>
               <div class="field">
@@ -10,6 +10,6 @@
               </div>
               <div class="field">
                 <label for="f-phone">Phone / WhatsApp</label>
-                <input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+254 7…" aria-describedby="f-phone-error">
+                <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" pattern="[0-9 +\-]{9,20}" placeholder="+254 7…" aria-describedby="f-phone-error">
                 <span class="field-error" id="f-phone-error"></span>
               </div>
