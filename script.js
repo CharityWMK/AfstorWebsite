@@ -370,6 +370,10 @@
         if (!response.ok || !result.ok) throw new Error(result.message || 'We could not send your enquiry. Please try again.');
 
         if (typeof result.token === 'string' && result.token) session.token = result.token;
+        /* Analytics: only the stakeholder type, never personal data, and only after server success. */
+        const STAKEHOLDER = { household: 'household', support: 'household', distributor: 'distributor_partner', institution: 'school_institution', development: 'development_org', investor: 'investor_government', general: 'other' };
+        const audience = new FormData(form).get('audience');
+        if (window.afstorAnalytics && STAKEHOLDER[audience]) window.afstorAnalytics.track('generate_lead', { stakeholder_type: STAKEHOLDER[audience] });
         const name = (form.querySelector('[name="name"]')?.value || '').trim().split(' ')[0];
         if (success) success.textContent = `Thank you${name ? `, ${name}` : ''}. ${result.message}`;
         form.reset();
