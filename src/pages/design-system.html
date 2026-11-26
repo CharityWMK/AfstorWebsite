@@ -1,0 +1,196 @@
+<!--
+title: Design System | Afstor Energy
+description: Afstor Energy website design system: colour tokens, typography, buttons, cards, forms and icons.
+nav: none
+robots: noindex, nofollow
+-->
+    <section class="page-hero page-hero--compact" aria-labelledby="page-title">
+      <div class="container">
+        <p class="eyebrow">Internal reference</p>
+        <h1 id="page-title" class="h-display">Afstor design system</h1>
+        <p class="lead">Every component on this page is rendered from the live stylesheet, <code>styles.css</code>. Tokens live at the top of that file under <code>:root</code>.</p>
+      </div>
+    </section>
+
+    <nav class="subnav" aria-label="On this page">
+      <div class="container">
+        <ul>
+          <li><a href="#colour">Colour</a></li>
+          <li><a href="#type">Typography</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#icons">Icons</a></li>
+          <li><a href="#spacing">Spacing &amp; shape</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section" id="colour" aria-labelledby="colour-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Colour tokens</p>
+          <h2 id="colour-title" class="h-xl">Brand colours, used with restraint</h2>
+          <p class="lead">Olive and leaf come straight from the Afstor logo; amber is the warm accent from the previous site. Most surfaces stay neutral. Brand colour is reserved for CTAs, highlights and data.</p>
+        </div>
+        <p class="ds-label">Brand</p>
+        <div class="ds-swatches" style="margin:1rem 0 2rem">
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#546241"></div><div class="ds-swatch-meta"><strong>Olive · primary</strong><code>--olive-600 #546241</code><small>White text 6.6:1 AA</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#99BE7F"></div><div class="ds-swatch-meta"><strong>Leaf · secondary</strong><code>--leaf-500 #99BE7F</code><small>Ink text 9:1 · on dark only</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#C88B2D"></div><div class="ds-swatch-meta"><strong>Amber · accent</strong><code>--amber-500 #C88B2D</code><small>Focus rings, highlights, not body text</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1F271B"></div><div class="ds-swatch-meta"><strong>Olive 900</strong><code>--olive-900 #1F271B</code><small>Dark sections, hero</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#435035"></div><div class="ds-swatch-meta"><strong>Olive 700</strong><code>--olive-700 #435035</code><small>Hover state</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#EAF2E3"></div><div class="ds-swatch-meta"><strong>Leaf 100</strong><code>--leaf-100 #EAF2E3</code><small>Icon badges, tints</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#8A5B14"></div><div class="ds-swatch-meta"><strong>Amber 700</strong><code>--amber-700 #8A5B14</code><small>Amber text 5.3:1 AA</small></div></div>
+        </div>
+        <p class="ds-label">Neutrals</p>
+        <div class="ds-swatches" style="margin-top:1rem">
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div><div class="ds-swatch-meta"><strong>White</strong><code>--white</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#F8F7F3"></div><div class="ds-swatch-meta"><strong>Canvas</strong><code>--canvas #F8F7F3</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#EFEDE6"></div><div class="ds-swatch-meta"><strong>Sand</strong><code>--sand #EFEDE6</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#E3E1D8"></div><div class="ds-swatch-meta"><strong>Line</strong><code>--line #E3E1D8</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#5F6659"></div><div class="ds-swatch-meta"><strong>Muted text</strong><code>--muted #5F6659</code><small>6:1 on white AA</small></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#2A3226"></div><div class="ds-swatch-meta"><strong>Body text</strong><code>--text #2A3226</code></div></div>
+          <div class="ds-swatch"><div class="ds-swatch-color" style="background:#1A2016"></div><div class="ds-swatch-meta"><strong>Ink · headings</strong><code>--ink #1A2016</code></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--canvas" id="type" aria-labelledby="type-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Typography</p>
+          <h2 id="type-title" class="h-xl">Plus Jakarta Sans</h2>
+          <p class="lead">One family keeps pages light on mobile data (weights 400–800). Sizes are fluid between phone and desktop.</p>
+        </div>
+        <div class="ds-block">
+          <div class="ds-type-row"><p class="ds-label">Display · .display · 42→80px / 800</p><p class="display" style="margin:0;color:var(--ink)">Cook with the sun.</p></div>
+          <div class="ds-type-row"><p class="ds-label">H1 · .h-display · 36→64px / 800</p><p class="h-display" style="margin:0;color:var(--ink);font-weight:800">Clean cooking for every home</p></div>
+          <div class="ds-type-row"><p class="ds-label">H2 · .h-xl · 30→46px / 800</p><p class="h-xl" style="margin:0;color:var(--ink);font-weight:800">Sunshine in. Hot meals out.</p></div>
+          <div class="ds-type-row"><p class="ds-label">H3 · 19px / 700</p><p style="margin:0;color:var(--ink);font-size:var(--fs-h3);font-weight:700">Solar-Induction Cooking System</p></div>
+          <div class="ds-type-row"><p class="ds-label">Eyebrow · .eyebrow · 12.5px / 700 / caps</p><p class="eyebrow">How it works</p></div>
+          <div class="ds-type-row"><p class="ds-label">Lead · .lead · 17→19px / 400</p><p class="lead" style="margin:0">One integrated system for cooking, lighting and essential power.</p></div>
+          <div class="ds-type-row"><p class="ds-label">Body · 16px / 1.65</p><p style="margin:0">Every Solar Cooker replaces the smoke and danger of an open fire with something safer, cleaner and smarter.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="buttons" aria-labelledby="buttons-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Buttons &amp; links</p>
+          <h2 id="buttons-title" class="h-xl">One primary action per view</h2>
+        </div>
+        <div class="ds-block">
+          <p class="ds-label">On light surfaces</p>
+          <div class="btn-row">
+            <a class="btn btn-primary btn-lg" href="#buttons">Primary · .btn-primary {{i:arrow-right}}</a>
+            <a class="btn btn-ghost btn-lg" href="#buttons">Secondary · .btn-ghost</a>
+            <a class="btn btn-primary" href="#buttons">Default size</a>
+            <a class="link-arrow" href="#buttons">Text link · .link-arrow {{i:arrow-right}}</a>
+          </div>
+        </div>
+        <div class="ds-block ds-block--dark">
+          <p class="ds-label" style="color:rgb(255 255 255 / 60%)">On dark surfaces</p>
+          <div class="btn-row">
+            <a class="btn btn-leaf btn-lg" href="#buttons">Primary · .btn-leaf {{i:arrow-right}}</a>
+            <a class="btn btn-outline-light btn-lg" href="#buttons">Secondary · .btn-outline-light</a>
+          </div>
+        </div>
+        <div class="ds-block">
+          <p class="ds-label">Chips, badges and placeholders</p>
+          <div class="btn-row" style="align-items:center">
+            <span class="chip">Chip · .chip</span>
+            <span class="audience-tag">{{i:home}} Audience tag</span>
+            <span class="icon-badge">{{i:sun}}</span>
+            <span class="icon-badge icon-badge--amber">{{i:fire}}</span>
+            <span class="tbc">Content to confirm · .tbc</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--canvas" id="cards" aria-labelledby="cards-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cards</p>
+          <h2 id="cards-title" class="h-xl">Card patterns</h2>
+        </div>
+        <div class="grid grid-3">
+          <article class="card"><span class="icon-badge">{{i:heart}}</span><h3>Feature card · .card</h3><p>Icon badge, title, short supporting copy. Used for benefits and models.</p></article>
+          <div class="metric-card"><span class="metric-value">6,400 kg</span><span class="metric-label">Metric card · .metric-card</span></div>
+          <a class="pathway-card" href="#cards"><span class="pathway-icon">{{i:store}}</span><span class="pathway-label">Pathway card</span><span class="pathway-text">Entry point for one stakeholder journey.</span><span class="pathway-cta">Call to action {{i:arrow-right}}</span></a>
+        </div>
+        <div class="grid grid-2" style="margin-top:1.25rem">
+          <ol class="steps" style="grid-template-columns:1fr"><li class="step"><span class="step-num">01</span><span class="icon-badge">{{i:sun}}</span><h3>Step · .step</h3><p>Numbered process step.</p></li></ol>
+          <article class="price-card price-card--featured"><p class="price-flag">Flag</p><h3>Price card</h3><p class="price"><strong>KES 20,000</strong> <span>deposit</span></p><p class="price-sub">.price-card--featured</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="forms" aria-labelledby="forms-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Forms</p>
+          <h2 id="forms-title" class="h-xl">Inputs sized for thumbs</h2>
+          <p class="lead">48px minimum height, 16px text (no zoom on iOS), visible labels, inline errors announced to screen readers.</p>
+        </div>
+        <div class="enquiry-form card" style="max-width:44rem">
+          <div class="form-grid">
+            <div class="field"><label for="ds-a">Text input</label><input id="ds-a" type="text" placeholder="Placeholder"></div>
+            <div class="field"><label for="ds-b">Select</label><select id="ds-b"><option>Pay-as-you-go</option><option>Full payment</option></select></div>
+            <div class="field"><label for="ds-c">Error state <span aria-hidden="true">*</span></label><input id="ds-c" type="text" aria-invalid="true" aria-describedby="ds-c-error"><span class="field-error" id="ds-c-error">This field is required.</span></div>
+            <div class="field"><label for="ds-d">Optional <span class="optional">(optional)</span></label><input id="ds-d" type="text"></div>
+            <div class="field field--full"><label for="ds-e">Textarea</label><textarea id="ds-e" rows="3"></textarea></div>
+          </div>
+          <p class="form-status form-status--success">Success message</p>
+          <p class="form-status form-status--error">Error message</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--canvas" id="icons" aria-labelledby="icons-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Icons</p>
+          <h2 id="icons-title" class="h-xl">Line icons, 24px grid, 1.75 stroke</h2>
+          <p class="lead">Inline SVG sprite (no extra requests). Use <code>&#123;&#123;i:name&#125;&#125;</code> in source pages; the build expands it.</p>
+        </div>
+        <ul class="ds-icons">
+          <li>{{i:sun}}<code>sun</code></li><li>{{i:battery}}<code>battery</code></li><li>{{i:cooktop}}<code>cooktop</code></li><li>{{i:pot}}<code>pot</code></li>
+          <li>{{i:leaf}}<code>leaf</code></li><li>{{i:tree}}<code>tree</code></li><li>{{i:cloud}}<code>cloud</code></li><li>{{i:fire}}<code>fire</code></li>
+          <li>{{i:wind}}<code>wind</code></li><li>{{i:heart}}<code>heart</code></li><li>{{i:coins}}<code>coins</code></li><li>{{i:clock}}<code>clock</code></li>
+          <li>{{i:home}}<code>home</code></li><li>{{i:store}}<code>store</code></li><li>{{i:school}}<code>school</code></li><li>{{i:globe}}<code>globe</code></li>
+          <li>{{i:chart}}<code>chart</code></li><li>{{i:landmark}}<code>landmark</code></li><li>{{i:factory}}<code>factory</code></li><li>{{i:truck}}<code>truck</code></li>
+          <li>{{i:wrench}}<code>wrench</code></li><li>{{i:shield}}<code>shield</code></li><li>{{i:award}}<code>award</code></li><li>{{i:gauge}}<code>gauge</code></li>
+          <li>{{i:target}}<code>target</code></li><li>{{i:eye}}<code>eye</code></li><li>{{i:spark}}<code>spark</code></li><li>{{i:star}}<code>star</code></li>
+          <li>{{i:users}}<code>users</code></li><li>{{i:handshake}}<code>handshake</code></li><li>{{i:briefcase}}<code>briefcase</code></li><li>{{i:map}}<code>map</code></li>
+          <li>{{i:doc}}<code>doc</code></li><li>{{i:calendar}}<code>calendar</code></li><li>{{i:layers}}<code>layers</code></li><li>{{i:play}}<code>play</code></li>
+          <li>{{i:phone}}<code>phone</code></li><li>{{i:mail}}<code>mail</code></li><li>{{i:pin}}<code>pin</code></li><li>{{i:whatsapp}}<code>whatsapp</code></li>
+          <li>{{i:linkedin}}<code>linkedin</code></li><li>{{i:arrow-right}}<code>arrow-right</code></li><li>{{i:arrow-up-right}}<code>arrow-up-right</code></li><li>{{i:check}}<code>check</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="spacing" aria-labelledby="spacing-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Spacing, shape &amp; motion</p>
+          <h2 id="spacing-title" class="h-xl">Tokens</h2>
+        </div>
+        <div class="ds-scroll">
+          <table class="ds-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><code>--gutter</code></td><td>16px → 24px</td><td>Page side padding (16px on phones)</td></tr>
+              <tr><td><code>.container</code></td><td>max 1216px</td><td>Content width</td></tr>
+              <tr><td><code>--section-y</code></td><td>64px → 120px</td><td>Vertical section padding</td></tr>
+              <tr><td><code>--r-sm / md / lg / xl</code></td><td>8 / 12 / 18 / 28px</td><td>Chips, inputs, cards, feature panels &amp; media</td></tr>
+              <tr><td><code>--shadow-sm / md / lg</code></td><td>soft, olive-tinted</td><td>Hover, raised cards, hero media &amp; menus</td></tr>
+              <tr><td><code>--ease</code></td><td>cubic-bezier(.22,1,.36,1)</td><td>All transitions. Reveal on scroll 0.7s, disabled with reduced motion</td></tr>
+              <tr><td>Breakpoints</td><td>640 / 900 / 1100px</td><td>2-col grids / desktop layouts / full navigation</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
