@@ -435,10 +435,8 @@ p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacin
 .brand img { width: auto; height: 3.4rem; }
 
 .header-actions { display: flex; align-items: center; gap: 0.5rem; }
-.header-whatsapp { display: none; color: #128C3E; }
 .header-cta { display: none; }
 @media (min-width: 640px) { .header-cta { display: inline-flex; } }
-@media (min-width: 900px) { .header-whatsapp { display: inline-grid; } }
 
 .menu-toggle .menu-close { display: none; }
 .menu-toggle[aria-expanded="true"] .menu-open { display: none; }
