@@ -7,15 +7,16 @@ Where every piece of the previous one-page site now lives, what was newly writte
 | Page | File | Purpose |
 |---|---|---|
 | Home | `index.html` | Hero, pathway selector, impact strip, problem/solution, how it works, products, impact, field photos, certifications, final CTA |
-| Solutions | `solutions.html` | Full product detail, pricing, components, what you can cook, institutional range, full FAQ |
-| Households | `households.html` | Consumer pathway: benefits, pricing & pay-as-you-go, where to buy, support, FAQ, order form |
-| Distributors & partners | `distributors.html` | Partnership model, partner support, onboarding, territories, application form |
-| Schools & institutions | `institutions.html` | Institutional solutions, savings estimator, case studies, installation, quote form |
+| Solutions | `solutions.html` | Cooking system (4 highlights, no prices), "Powered by the Sun" callout, what you can cook, institutional range, full FAQ |
+| Households | `households.html` | Consumer pathway: benefits, payment options & pay-as-you-go, where to buy, support, FAQ, order form. "Get Your Cooker" buttons open the Contact form preset to Household |
+| Distributors & partners | `distributors.html` | Partnership model, partner support, onboarding, territories ("We deliver everywhere in Kenya"), application form |
+| Schools & institutions | `institutions.html` | Institutional solutions, savings estimator, installation, quote form |
 | Development organisations | `development-partners.html` | Programme models, distribution at scale, impact measurement, SDGs, collaboration form |
-| Investors & government | `investors.html` | Business model, traction, carbon, policy, governance, investor/meeting form. No shopping messaging. |
-| Impact | `impact.html` | Health, environment, economic, climate; tracking; direct and secondary SDGs |
-| About | `about.html` | Story, video, vision, mission, values, local assembly, team |
-| Insights | `news.html` | Featured video, LinkedIn, article slots |
+| Investors & government | `investors.html` | Opportunity, business model, carbon, policy, governance, investor/meeting form. No consumer messaging. |
+| Impact | `impact.html` | Health, environment (forests and CO₂), household savings beside the impact-banner photo; direct and secondary SDGs |
+| About | `about.html` | Story, vision, mission, "See Afstor in Action" video, values, local assembly |
+| Insights | `news.html` | Featured story (SOLCO Partnership), listing with video card, LinkedIn, article slots |
+| SOLCO article | `news-solco-partnership.html` | Partnership announcement with LinkedIn post, commitments strip, quote, share buttons |
 | Contact | `contact.html` | Contact cards, segmented enquiry form (routes by stakeholder), map |
 | Design system | `design-system.html` | Internal reference (not indexed by search engines) |
 
@@ -28,27 +29,27 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | Utility bar: phone +254 181 100 200, LinkedIn | Utility bar (desktop), footer, mobile Call/WhatsApp bar |
 | Logo | Header, footer, favicon |
 | Hero: "Impact That MATTERS/LASTS/COUNTS/LEADS" | Replaced by the new value proposition with a rotating word (home/school/clinic/community) |
-| Hero description ("integrated solar-powered energy system… cooking, lighting and essential power") | Solutions hero lead; Home "How it works" intro |
-| Hero CTA "Get Yours Today" | Households "Shop / Find a Product"; Home final CTA |
+| Hero description (old "integrated solar-powered energy system" copy) | Rewritten as cooking-only copy (Afstor offers clean cooking solutions only): Solutions hero, Home "How it works" intro |
+| Hero CTA "Get Yours Today" | "Get Your Cooker" (Households, Solutions, Home) → Contact form preset to Household |
 | Hero image `Open cookers.jpg` | Resized to `images/optimized/assembly-line-*.jpg`; used on Home (products, field), Distributors, Development, About, Solutions |
 | About copy, paragraph 1 ("For millions of families…") | Home "The problem"; About "Our story"; Investors "Opportunity" |
 | About copy, paragraphs 2–5 | About "Our story" (verbatim, lightly edited) |
-| About copy, "tracks its own impact" | Home "How Afstor solves it"; Impact "Transparent tracking"; Development "Impact measurement"; Investors "Carbon" |
+| About copy, "tracks its own impact" | Home "How Afstor solves it"; Solutions highlight "Built-in tracking"; Development "Impact measurement"; Investors "Carbon" |
 | Closing vision paragraph ("We're not just selling a product…") | About hero lead |
-| YouTube video (wodoyiWW3rU) | About "Our story"; Insights featured post (now privacy-enhanced embed, no autoplay) |
+| YouTube video (wodoyiWW3rU) | About "See Afstor in Action" (16:9, after vision & mission); Insights video card |
 | Vision | About; Investors pull quote |
 | Mission | About |
 | Core values (6) | About values grid; Investors governance references integrity/professionalism/quality |
-| Product: 450W Solar Panels (copy, specs, WhatsApp enquiry) | Solutions → Components (verbatim); Home products card |
-| Product: Solar-Induction Cooking System (copy, 4 features, WhatsApp enquiry) | Solutions → Cooking system (verbatim); Home products card; Households pricing |
+| Product: 450W Solar Panels (copy, specs, WhatsApp enquiry) | Home products card. The Solutions "Inside the system" component cards were replaced by the "Powered by the Sun" callout |
+| Product: Solar-Induction Cooking System (copy, 4 features, WhatsApp enquiry) | Solutions → Cooking system (now 4 highlights incl. 12V DC charge input; prices removed); Home products card; Households payment options |
 | "What you can cook" (6 dishes, times "[X]") | Solutions → What you can cook (times still to confirm) |
 | Impact: "How does Afstor solve the problem?" (100% solar, zero CO₂) | Home "How Afstor solves it"; Impact hero |
 | Impact: 260,000 km over five years | Home stat strip; Impact "Climate"; Investors carbon figures |
-| Impact: tracking website | Impact, Households support, Development, Investors |
+| Impact: tracking website | Solutions highlight, Households support, Development, Investors |
 | Images `fam.webp`, `Solar_roof.webp`, `carrying-wood2.webp` | Home, Households, Development, About, Institutions, Impact, Investors, Insights |
 | SDGs: 7 direct + 4 secondary, tier copy | Impact → SDGs (both tiers, verbatim); Development → SDG alignment (direct) |
 | FAQ (9 questions) | Solutions → FAQ (all 9); Households → 4 most relevant |
-| FAQ: pricing (KES 96,000 / KES 20,000 + 4,000 × 24) | Households pricing cards; Solutions price strip; Distributors; Investors business model |
+| FAQ: payment plans (KES 96,000 / KES 20,000 + 4,000 × 24) | Households payment-option cards and FAQ; Distributors; Investors business model (removed from Solutions) |
 | FAQ: KES 52,000 a year saving | Home stat strip; Households benefits; Impact "Economic" |
 | FAQ: up to 4 hours after sunset | Home hero badge and "How it works"; Households; Solutions |
 | FAQ: delivery, installation, 2-year warranty, technicians | Home hero proof points; Households support; Institutions installation |
@@ -80,11 +81,10 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | Solutions | Cooking times for the six dishes |
 | Households → Where to buy | Showroom visiting hours |
 | Distributors | Standard margin range, minimum order; priority counties |
-| Institutions | At least one institutional case study (people fed, fuel cost before/after, systems installed); institutional system sizes |
+| Institutions | Institutional system sizes |
 | Development | Monthly assembly capacity and installed base |
-| Investors | Traction metrics (systems deployed, institutions, PAYG repayment rate, CO₂ to date); specific national/county policy references; board, leadership, auditors |
-| About | Team names, roles, photos |
-| Insights | Articles (three slots ready) |
+| Investors | Specific national/county policy references; board, leadership, auditors |
+| Insights | Articles (three placeholder slots remain under the SOLCO story) |
 | All pages | Real photos of people cooking with Afstor in Kenyan homes, schools and institutions. The current hero shows an installation |
 
 ## Proposed wording to review
@@ -103,3 +103,6 @@ python src/build.py
 ```
 
 This regenerates the `.html` files in the site root, which is what cPanel deploys. Do not edit the root `.html` files directly; the next build overwrites them.
+
+## Update log
+- **26 Nov 2026**: Clean-cooking-only messaging across the site; "Home" link added to the menu; enquiry-led "Get Your Cooker" buttons; Solutions prices and component cards removed; Impact "Transparent tracking" section, the Investors metrics section, Institutions "Case studies" and About "Our team" removed; SOLCO Partnership article added. The company vision now reads "…off-grid cooking solutions…" (was "…cooking and distributed energy solutions…") and the mission "…solar cooking solutions…" (was "…solar energy solutions…").

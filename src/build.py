@@ -8,6 +8,8 @@ Pages live in src/pages/*.html. Each page starts with a metadata comment:
     nav: home | solutions | serve | impact | about | news | contact
     whatsapp: Prefilled WhatsApp message for this page
     robots: noindex          (optional)
+    image: share image path  (optional)
+    og_type: article         (optional)
     -->
 
 The build wraps every page with src/partials/{head,header,footer}.html and writes
@@ -92,6 +94,8 @@ def build_page(path: Path, sprite_ids: set[str]) -> str:
         "{{whatsapp}}": quote(whatsapp),
         "{{robots}}": robots,
         "{{page}}": path.name,
+        "{{image}}": meta.get("image", "images/optimized/install-team-1000.jpg"),
+        "{{og_type}}": meta.get("og_type", "website"),
     }
     for token, value in replacements.items():
         html = html.replace(token, value)

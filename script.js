@@ -267,6 +267,22 @@
     });
   });
 
+  /* Share buttons: share the URL the reader is actually on (falls back to the static href) */
+  const shareTargets = {
+    linkedin: (u) => `https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
+    x: (u, t) => `https://twitter.com/intent/tweet?url=${u}&text=${t}`,
+    whatsapp: (u, t) => `https://wa.me/?text=${t}%20${u}`,
+    facebook: (u) => `https://www.facebook.com/sharer/sharer.php?u=${u}`
+  };
+  if (/^https?:$/.test(window.location.protocol)) {
+    const url = encodeURIComponent(window.location.href.split('#')[0]);
+    const title = encodeURIComponent(document.querySelector('h1')?.textContent.trim() || document.title);
+    document.querySelectorAll('[data-share]').forEach((a) => {
+      const build = shareTargets[a.dataset.share];
+      if (build) a.href = build(url, title);
+    });
+  }
+
   /* Links such as "Start with a deposit" pre-select an option in the page's form */
   document.querySelectorAll('[data-prefill]').forEach((link) => {
     link.addEventListener('click', () => {
