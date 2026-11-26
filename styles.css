@@ -356,7 +356,7 @@ ul, ol { margin: 0; padding: 0; }
 .icon-badge--dark { background: rgb(153 190 127 / 14%); color: var(--leaf-500); }
 .icon-badge--wa { background: #E3F8EA; color: #128C3E; }
 
-/* "To be confirmed" content placeholders — visible on staging so gaps get filled */
+/* Pending cooking times on the Solutions page */
 .tbc {
   display: inline-flex;
   align-items: center;
@@ -370,9 +370,6 @@ ul, ol { margin: 0; padding: 0; }
   font-weight: 700;
   line-height: 1.4;
 }
-p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; }
-.tbc--dark { background: rgb(200 139 45 / 12%); color: var(--amber-100); }
-.metric-value.tbc { padding: 0.1rem 0.6rem; font-size: 1.5rem; }
 
 .checklist { list-style: none; display: grid; gap: 0.7rem; }
 .checklist li { display: flex; gap: 0.7rem; align-items: flex-start; }
@@ -799,8 +796,6 @@ p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacin
 .card p { color: var(--muted); }
 .card--lg { padding: clamp(1.5rem, 1.25rem + 1vw, 2.25rem); }
 .card--lg h3 { margin-bottom: 1rem; }
-.card--note { border-style: dashed; border-color: var(--amber-500); background: var(--amber-50); }
-.card--note p.tbc { margin-top: 0.5rem; }
 .card--feature .eyebrow { margin-bottom: 0.75rem; }
 .feature-text { color: var(--ink) !important; font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem); font-weight: 600; line-height: 1.5; }
 
@@ -1215,7 +1210,6 @@ p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacin
 .team-photo .icon { width: 3rem; height: 3rem; }
 .team-card p { color: var(--muted); font-size: var(--fs-small); }
 .team-card--join .team-photo { border: 1px dashed var(--line-strong); background: var(--canvas); color: var(--olive-600); }
-#team > .container > .tbc { margin-top: 1.5rem; }
 
 .video-frame { overflow: hidden; aspect-ratio: 16 / 9; border-radius: var(--r-xl); background: var(--olive-900); box-shadow: var(--shadow-md); }
 .video-frame iframe { width: 100%; height: 100%; border: 0; }
@@ -1225,7 +1219,7 @@ p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacin
 @media (min-width: 900px) { .feature-post { grid-template-columns: 1.3fr 1fr; gap: 3rem; } }
 .feature-post-body > * + * { margin-top: 1rem; }
 .post-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); }
-.post-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.post-card img { width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; }
 .post-body { display: grid; gap: 0.6rem; justify-items: start; padding: 1.5rem; }
 .post-meta { margin: 0; color: var(--olive-600); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 
@@ -1542,9 +1536,9 @@ p.tbc::before { content: "To confirm:"; text-transform: uppercase; letter-spacin
 .article-body { padding-block: clamp(2rem, 1.5rem + 2vw, 3rem) var(--section-y-tight); font-size: 1.075rem; line-height: 1.75; }
 .article-body > p { margin-bottom: 1.35rem; }
 
-.social-embed { max-width: 600px; margin: 2.25rem auto; }
-.social-embed img { width: 100%; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); box-shadow: var(--shadow-md); }
-.social-embed figcaption { margin-top: 0.85rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.5; text-align: center; }
+/* Live LinkedIn post: scales down on phones, never wider than LinkedIn's 504px */
+.linkedin-embed { width: 100%; max-width: 504px; margin: 2.25rem auto; }
+.linkedin-embed iframe { display: block; width: 100%; height: 670px; border: 0; border-radius: var(--r-lg); background: var(--white); box-shadow: var(--shadow-md); }
 
 .commit-strip {
   margin: 2.25rem 0;

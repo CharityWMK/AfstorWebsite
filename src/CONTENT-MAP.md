@@ -1,6 +1,6 @@
 # Afstor website — content map
 
-Where every piece of the previous one-page site now lives, what was newly written, and what still needs real content. Placeholders on the site show as amber dashed "To confirm" boxes so they're easy to spot on staging.
+Where every piece of the previous one-page site now lives, what was newly written, and what still needs real content. Content gaps are listed here only; the site itself no longer shows gap markers, except the cooking times on Solutions.
 
 ## New site structure
 
@@ -14,9 +14,9 @@ Where every piece of the previous one-page site now lives, what was newly writte
 | Development organisations | `development-partners.html` | Programme models, distribution at scale, impact measurement, SDGs, collaboration form |
 | Investors & government | `investors.html` | Opportunity, business model, carbon, policy, governance, investor/meeting form. No consumer messaging. |
 | Impact | `impact.html` | Health, environment (forests and CO₂), household savings beside the impact-banner photo; direct and secondary SDGs |
-| About | `about.html` | Story, vision, mission, "See Afstor in Action" video, values, local assembly |
-| Insights | `news.html` | Featured story (SOLCO Partnership), listing with video card, LinkedIn, article slots |
-| SOLCO article | `news-solco-partnership.html` | Partnership announcement with LinkedIn post, commitments strip, quote, share buttons |
+| About | `about.html` | Text-only intro, story, vision, mission, values |
+| Insights | `news.html` | Blog: featured SOLCO story, listing (SOLCO + video card), LinkedIn |
+| SOLCO article | `news-solco-partnership.html` | Partnership announcement with live LinkedIn embed, commitments strip, quote, share buttons |
 | Contact | `contact.html` | Contact cards, segmented enquiry form (routes by stakeholder), map |
 | Design system | `design-system.html` | Internal reference (not indexed by search engines) |
 
@@ -36,13 +36,13 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | About copy, paragraphs 2–5 | About "Our story" (verbatim, lightly edited) |
 | About copy, "tracks its own impact" | Home "How Afstor solves it"; Solutions highlight "Built-in tracking"; Development "Impact measurement"; Investors "Carbon" |
 | Closing vision paragraph ("We're not just selling a product…") | About hero lead |
-| YouTube video (wodoyiWW3rU) | About "See Afstor in Action" (16:9, after vision & mission); Insights video card |
+| YouTube video (wodoyiWW3rU) | Blog video card (removed from About on 26 Nov 2026) |
 | Vision | About; Investors pull quote |
 | Mission | About |
 | Core values (6) | About values grid; Investors governance references integrity/professionalism/quality |
 | Product: 450W Solar Panels (copy, specs, WhatsApp enquiry) | Home products card. The Solutions "Inside the system" component cards were replaced by the "Powered by the Sun" callout |
 | Product: Solar-Induction Cooking System (copy, 4 features, WhatsApp enquiry) | Solutions → Cooking system (now 4 highlights incl. 12V DC charge input; prices removed); Home products card; Households payment options |
-| "What you can cook" (6 dishes, times "[X]") | Solutions → What you can cook (times still to confirm) |
+| "What you can cook" (6 dishes, times "[X]") | Solutions → What you can cook (cooking times still to be added; shown as "~[X]") |
 | Impact: "How does Afstor solve the problem?" (100% solar, zero CO₂) | Home "How Afstor solves it"; Impact hero |
 | Impact: 260,000 km over five years | Home stat strip; Impact "Climate"; Investors carbon figures |
 | Impact: tracking website | Solutions highlight, Households support, Development, Investors |
@@ -71,7 +71,7 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 - Hero slide 2: it pointed to `images/hero/hero-slide-2.jpg`, which doesn't exist, with an Unsplash stock fallback.
 - Unused images left in place but not used: `products/Battery.jpg`, `impact/sdg/sdg-5.png` (duplicate of SDG 5 webp), the original `WhatsApp Image…jpeg` and `Open cookers.jpg` (resized copies are used instead).
 
-## Content to supply ("To confirm" boxes)
+## Content still to supply (not shown on the site)
 
 | Where | What's needed |
 |---|---|
@@ -84,7 +84,6 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | Institutions | Institutional system sizes |
 | Development | Monthly assembly capacity and installed base |
 | Investors | Specific national/county policy references; board, leadership, auditors |
-| Insights | Articles (three placeholder slots remain under the SOLCO story) |
 | All pages | Real photos of people cooking with Afstor in Kenyan homes, schools and institutions. The current hero shows an installation |
 
 ## Proposed wording to review
@@ -106,3 +105,4 @@ This regenerates the `.html` files in the site root, which is what cPanel deploy
 
 ## Update log
 - **26 Nov 2026**: Clean-cooking-only messaging across the site; "Home" link added to the menu; enquiry-led "Get Your Cooker" buttons; Solutions prices and component cards removed; Impact "Transparent tracking" section, the Investors metrics section, Institutions "Case studies" and About "Our team" removed; SOLCO Partnership article added. The company vision now reads "…off-grid cooking solutions…" (was "…cooking and distributed energy solutions…") and the mission "…solar cooking solutions…" (was "…solar energy solutions…").
+- **26 Nov 2026 (later)**: About: hero photo, "Watch" video section and "Made in Kenya" section removed. Blog: category labels and unwritten article slots removed; SOLCO article now embeds the live LinkedIn post. All on-site gap markers removed except cooking times; the gaps remain listed above.
