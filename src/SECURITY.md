@@ -75,9 +75,8 @@ restore it. cPanel's Errors log names the line.
 
 ## Google Analytics 4 (consent-based)
 
-- **Where:** `analytics.js` (loaded in every page's `<head>`, deferred). The Measurement ID is the
-  `MEASUREMENT_ID` line at the top. It ships as the placeholder `G-XXXXXXXXXX`, which keeps analytics
-  fully off. Replace it with the real ID and redeploy; no rebuild needed.
+- **Where:** `analytics.js` (loaded in every page's `<head>`, deferred). The Measurement ID (`G-7QN08Y8K1L`) is the
+  `MEASUREMENT_ID` line at the top. To change it, edit that line and redeploy; no rebuild needed.
 - **When it loads:** only on `afstor.co.ke` / `www.afstor.co.ke` (never staging), only with a real ID,
   and only after the visitor clicks **Accept**. Consent Mode v2 defaults analytics_storage,
   ad_storage, ad_user_data and ad_personalization to `denied`; Accept updates analytics_storage to
