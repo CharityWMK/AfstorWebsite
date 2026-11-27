@@ -1,7 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/zpnitnzt/staging.afstor.co.ke/
+    - export BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    - if [ "$BRANCH" = "main" ]; then export DEPLOYPATH=/home/zpnitnzt/public_html/; else export DEPLOYPATH=/home/zpnitnzt/staging.afstor.co.ke/; fi
     - /bin/cp -R * $DEPLOYPATH
-    # "*" skips dot-files, so copy the server security config explicitly.
-    - /bin/cp .htaccess .user.ini $DEPLOYPATH
