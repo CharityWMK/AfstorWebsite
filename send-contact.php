@@ -37,9 +37,9 @@ $ROUTES = [
     'support'     => ['team' => 'Customer support',            'to' => 'sales.ke@afstor.com'],
     'distributor' => ['team' => 'Partnerships (distributors)', 'to' => 'sales.ke@afstor.com'],
     'institution' => ['team' => 'Institutional sales',         'to' => 'sales.ke@afstor.com'],
-    'development' => ['team' => 'Partnerships (development)',  'to' => 'office@afstor.com'],
-    'investor'    => ['team' => 'Investor & government',       'to' => 'office@afstor.com'],
-    'general'     => ['team' => 'General',                     'to' => 'office@afstor.com'],
+    'development' => ['team' => 'Partnerships (development)',  'to' => 'office.ke@afstor.com'],
+    'investor'    => ['team' => 'Investor & government',       'to' => 'office.ke@afstor.com'],
+    'general'     => ['team' => 'General',                     'to' => 'office.ke@afstor.com'],
 ];
 
 /* Allow-list patterns (Unicode-aware, so Kenyan and international names work). */

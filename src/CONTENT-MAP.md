@@ -56,7 +56,7 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | FAQ: delivery, installation, 2-year warranty, technicians | Home hero proof points; Households support; Institutions installation |
 | FAQ: schools, clinics, churches, community groups, bulk discount | Institutions page; Solutions institutional section |
 | Contact: sales.ke@afstor.com, +254 182 241 801 | Sales email: contact cards, footer, Households/Institutions forms. The sales phone number was removed on 27 Nov 2026; +254 181 100 200 is the only number |
-| Footer: office@afstor.com, 38988 Infinity Industrial Park | Contact cards and "Visit us", footer, Development/Investor forms |
+| Footer: office.ke@afstor.com, 38988 Infinity Industrial Park | Contact cards and "Visit us", footer, Development/Investor forms |
 | Contact form (single form, request-type dropdown) | Replaced by a stakeholder form on each pathway page plus a segmented form on Contact. Routing is set in `send-contact.php` |
 | Map embed | Contact → Visit us |
 | Footer blurb | Footer (unchanged) |
