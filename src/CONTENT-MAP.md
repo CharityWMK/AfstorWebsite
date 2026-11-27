@@ -43,7 +43,7 @@ Pathways are reachable from: the home hero ("Partner With Us" → pathway select
 | Core values (6) | About values grid; Investors governance references integrity/professionalism/quality |
 | Product: 450W Solar Panels (copy, specs, WhatsApp enquiry) | Home products card. The Solutions "Inside the system" component cards were replaced by the "Powered by the Sun" callout |
 | Product: Solar-Induction Cooking System (copy, 4 features, WhatsApp enquiry) | Solutions → Cooking system (now 4 highlights incl. 12V DC charge input; prices removed); Home products card; Households payment options |
-| "What you can cook" (6 dishes, times "[X]") | Solutions → What you can cook (cooking times still to be added; shown as "~[X]") |
+| "What you can cook" (7 dishes, cooking times) | Solutions → What you can cook (serving note for a family of 8) |
 | Impact: "How does Afstor solve the problem?" (100% solar, zero CO₂) | Home "How Afstor solves it"; Impact hero |
 | Impact: 260,000 km over five years | Home stat strip; Impact "Climate"; Investors carbon figures |
 | Impact: tracking website | Solutions highlight, Households support, Development, Investors |

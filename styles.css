@@ -1131,6 +1131,7 @@ ul, ol { margin: 0; padding: 0; }
 .cook-card { padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); }
 .cook-card h3 { margin: 0.9rem 0 0.35rem; }
 .cook-card p { color: var(--muted); font-size: 0.93rem; }
+.cook-serving-note { color: var(--muted); font-size: var(--fs-small); line-height: 1.5; }
 
 .metric-card { display: grid; gap: 0.35rem; align-content: start; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--white); }
 .metric-value { justify-self: start; color: var(--olive-600); font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
