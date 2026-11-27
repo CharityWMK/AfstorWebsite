@@ -1,12 +1,13 @@
-name: Deploy to staging
+name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
 
 env:
-    REPO_PATH: /home/zpnitnzt/website/staging.afstor.co.ke
+  BRANCH: ${{ github.ref_name }}
+  REPO_PATH: ${{ github.ref_name == 'main' && '/home/zpnitnzt/website/afstor.co.ke' || '/home/zpnitnzt/website/staging.afstor.co.ke' }}
 
 jobs:
   deploy:
@@ -15,7 +16,7 @@ jobs:
       - name: Update from Remote
         run: |
           response=$(curl -sS -H "Authorization: cpanel ${{ secrets.CPANEL_USER }}:${{ secrets.CPANEL_TOKEN }}" \
-            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=${REPO_PATH}&branch=main")
+            "https://${{ secrets.CPANEL_HOST }}:2083/execute/VersionControl/update?repository_root=${REPO_PATH}&branch=${BRANCH}")
           echo "$response"
           echo "$response" | grep -q '"status":1'
 
